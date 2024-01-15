@@ -1,4 +1,6 @@
-﻿namespace BooksWebApplication.Domain.Interfaces
+﻿using BooksWebApplication.Domain.Entities;
+
+namespace BooksWebApplication.Infrastructure.Interfaces
 {
     //Interface for Book Repository
     public interface IBookRepository

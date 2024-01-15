@@ -1,8 +1,8 @@
-﻿using BooksWebApplication.Domain.Interfaces;
-using BooksWebApplication.Domain.Entities;
+﻿using BooksWebApplication.Domain.Entities;
+using BooksWebApplication.Infrastructure.Interfaces;
 using System.Data.SqlClient;
 
-namespace BooksWebApplication.Domain
+namespace BooksWebApplication.Infrastructure
 {
     public class BookRepository : IBookRepository
     {

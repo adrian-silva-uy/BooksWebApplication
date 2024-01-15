@@ -1,62 +1,30 @@
-//using BooksWebApplication.Infrastrucuture.Interfaces;
-//using BooksWebApplication.Infrastrucuture.ServiceLayer;
-//using BooksWebApplication.Infrastrucuture;
-
-//var builder = WebApplication.CreateBuilder(args);
-
-//// Add services to the container.
-
-//builder.Services.AddTransient<IBookRepository, BookRepository>();
-//builder.Services.AddScoped<IBookService, BookService>();
-
-//builder.Services.AddControllers();
-//// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-
-//var app = builder.Build();
-
-//// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
-
-//app.UseRouting();
-//app.UseEndpoints(endpoints =>
-//{
-//    endpoints.MapControllers();
-//});
-
-//app.UseHttpsRedirection();
-
-////app.UseAuthorization();
-
-
-//app.Run();
-
-using BooksWebApplication.Domain;
-using BooksWebApplication.Domain.Interfaces;
-using BooksWebApplication.Domain.ServiceLayer;
+using BooksWebApplication.Infrastructure;
+using BooksWebApplication.Infrastructure.Interfaces;
+using BooksWebApplication.Infrastructure.ServiceLayer;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookRepository>(b => new BookRepository(@"Data Source=LENOVO_R3;Database=Ballast_Lane_Books;Integrated Security=sspi;"));
 builder.Services.AddScoped<BookService>();
+
+builder.Services.AddTransient<IBookService, BookService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Book service API", Version = "v1" });
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    // Swagger setup
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Book service API"));
 }
 
 app.UseHttpsRedirection();

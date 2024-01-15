@@ -1,6 +1,6 @@
 ﻿using BooksWebApplication.Domain.Entities;
 
-namespace BooksWebApplication.Domain.Interfaces
+namespace BooksWebApplication.Infrastructure.Interfaces
 {
     public interface IBookService
     {

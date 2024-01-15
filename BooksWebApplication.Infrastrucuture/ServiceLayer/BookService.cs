@@ -1,7 +1,7 @@
 ﻿using BooksWebApplication.Domain.Entities;
-using BooksWebApplication.Domain.Interfaces;
+using BooksWebApplication.Infrastructure.Interfaces;
 
-namespace BooksWebApplication.Domain.ServiceLayer
+namespace BooksWebApplication.Infrastructure.ServiceLayer
 
 {
     public class BookService : IBookService

@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BooksWebApplication.Infrastrucuture\BooksWebApplication.Infrastrucuture.csproj" />
+    <ProjectReference Include="..\BooksWebApplication.Infrastrucuture\BooksWebApplication.Infrastructure.csproj" />
     <ProjectReference Include="..\Domain\BooksWebApplication.Domain.csproj" />
   </ItemGroup>
 
